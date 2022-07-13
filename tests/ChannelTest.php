@@ -64,7 +64,7 @@ class ChannelTest extends TestCase
     /** @test */
     public function itCanSendANotification()
     {
-        $message = $this->notification->toExpoPush($this->notifiable);
+        $message = $this->notification->toExpoPush($this->notifiable, $this->notification);
 
         $data = $message->toArray();
 
@@ -76,7 +76,7 @@ class ChannelTest extends TestCase
     /** @test */
     public function itFiresFailureEventOnFailure()
     {
-        $message = $this->notification->toExpoPush($this->notifiable);
+        $message = $this->notification->toExpoPush($this->notifiable, $this->notification);
 
         $data = $message->toArray();
 
@@ -105,7 +105,7 @@ class TestNotifiable
 
 class TestNotification extends Notification
 {
-    public function toExpoPush($notifiable)
+    public function toExpoPush($notifiable, $notification)
     {
         return new ExpoMessage();
     }

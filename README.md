@@ -96,7 +96,7 @@ class AccountApproved extends Notification
         return [ExpoChannel::class];
     }
 
-    public function toExpoPush($notifiable)
+    public function toExpoPush($notifiable, $notification)
     {
         return ExpoMessage::create()
             ->badge(1)
